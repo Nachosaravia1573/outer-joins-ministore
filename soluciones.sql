@@ -11,10 +11,9 @@
 
 SELECT v.venta_id,
        p.nombre,
-      v.categoria
-FROM ventas v  
-LEFT JOIN productos p   ON v.producto_id = p.producto_id
-WHERE v.venta_id IS NULL
+      p.categoria
+FROM productos p  
+LEFT JOIN ventas v  ON v.producto_id = p.producto_id
 ORDER BY v.venta_id;
       
 
@@ -25,12 +24,11 @@ ORDER BY v.venta_id;
 -- Los registros huérfanos aparecerán con NULL en las columnas de productos.
 
 SELECT v.venta_id,
+       v.producto_id,
        p.nombre
-FROM   productos p
-RIGHT JOIN ventas v ON v.producto_id = p.producto_id
-WHERE v.venta_id IS NULL
+FROM  ventas v 
+RIGHT JOIN productos p  ON v.producto_id = p.producto_id
 ORDER BY v.venta_id;
-       
 
 
 
